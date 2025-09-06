@@ -11,12 +11,23 @@
  * @return {boolean}
  */
 var hasCycle = function (head) {
-    const hashSet = new Set();
-    let curr = head;
-    while (curr) {
-        if (hashSet.has(curr)) return true;
-        hashSet.add(curr)
-        curr = curr.next
+    // const hashSet = new Set();
+    // let curr = head;
+    // while (curr) {
+    //     if (hashSet.has(curr)) return true;
+    //     hashSet.add(curr)
+    //     curr = curr.next
+    // }
+    // return false;
+
+    // Slow and Fast pointer approach (floyds cycle algo)
+    if(!head) return false;
+    let slow = head;
+    let fast = head.next;
+    while (slow != fast) {
+        if (!fast || !fast.next) return false;
+        slow = slow.next
+        fast = fast.next.next
     }
-    return false;
+    return true;
 };
