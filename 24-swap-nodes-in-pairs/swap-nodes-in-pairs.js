@@ -9,25 +9,35 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var swapPairs = function(head) {
+var swapPairs = function (head) {
+    // Interative way
+    // if(!head || !head.next) return head;
+
+    // let dummy = new ListNode()
+    // dummy.next = head
+    // let p = dummy
+    // let c = head
+    // let n = head.next
+
+    // while(c && n) {
+    //     p.next = n
+    //     c.next = n.next
+    //     n.next = c
+    //     p = c;
+    //     c = p.next;
+    //     n = c && c.next;
+    // }
+    // return dummy.next;
+
+    // recursive way
     if(!head || !head.next) return head;
     
-    let dummy = new ListNode()
-    dummy.next = head
-    let p = dummy
-    let c = head
-    let n = head.next
+    let l = head
+    let r = head.next
 
-    while(c && n) {
-        p.next = n
-        c.next = n.next
-        n.next = c
+    l.next = swapPairs(r.next)
+    r.next = l
+    return r;
 
-        p = c;
-        c = p.next;
-        n = c && c.next;
-    }
-
-    return dummy.next;
 
 };
