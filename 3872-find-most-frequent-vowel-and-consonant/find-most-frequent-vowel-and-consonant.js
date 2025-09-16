@@ -12,10 +12,11 @@ var maxFreqSum = function (s) {
     let maxVowelCount = 0;
     let maxConsonentCount = 0;
     for (let i = 0; i < s.length; i++) {
-        if (vowels.includes(s[i])) {
-            maxVowelCount = Math.max(maxVowelCount, countHash[s[i]])
-        } else {
-            maxConsonentCount = Math.max(maxConsonentCount, countHash[s[i]])
+        if (vowels.includes(s[i]) && countHash[s[i]] > maxVowelCount) {
+            maxVowelCount = countHash[s[i]]
+        } 
+        if (!vowels.includes(s[i]) && countHash[s[i]] > maxConsonentCount) {
+            maxConsonentCount = countHash[s[i]]
         }
     }
 
