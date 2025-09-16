@@ -11,13 +11,22 @@ var maxFreqSum = function (s) {
 
     let maxVowelCount = 0;
     let maxConsonentCount = 0;
-    for (let i = 0; i < s.length; i++) {
-        if (vowels.includes(s[i]) && countHash[s[i]] > maxVowelCount) {
-            maxVowelCount = countHash[s[i]]
-        } else if (!vowels.includes(s[i]) && countHash[s[i]] > maxConsonentCount) {
-            maxConsonentCount = countHash[s[i]]
+    // for (let i = 0; i < s.length; i++) {
+    //     if (vowels.includes(s[i]) && countHash[s[i]] > maxVowelCount) {
+    //         maxVowelCount = countHash[s[i]]
+    //     } else if (!vowels.includes(s[i]) && countHash[s[i]] > maxConsonentCount) {
+    //         maxConsonentCount = countHash[s[i]]
+    //     }
+    // }
+
+    Object.keys(countHash).forEach(letter => {
+        if (vowels.includes(letter) && maxVowelCount < countHash[letter]) {
+            maxVowelCount = countHash[letter]
         }
-    }
+        if (!vowels.includes(letter) && countHash[letter] > maxConsonentCount) {
+            maxConsonentCount = countHash[letter]
+        }
+    })
 
     return maxVowelCount + maxConsonentCount;
 };
