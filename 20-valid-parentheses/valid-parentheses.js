@@ -3,15 +3,15 @@
  * @return {boolean}
  */
 function isValid(s) {
-    const stack = [];
-    const map = { '(': ')', '{': '}', '[': ']' };
+    const st = [];
+    const m = { '(': ')', '{': '}', '[': ']' };
     for (let char of s) {
-        if (map[char]) {
-            stack.push(char)
+        if (m[char]) {
+            st.push(char)
         } else {
-            const topElement = stack.pop();
-            if (map[topElement] !== char) return false;
+            const topElement = st.pop();
+            if (m[topElement] !== char) return false;
         }
     }
-    return stack.length === 0;
+    return st.length === 0;
 }
