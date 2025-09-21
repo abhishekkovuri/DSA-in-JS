@@ -4,11 +4,9 @@
  * @return {number[]}
  */
 var nextGreaterElement = function (n1, n2) {
-    let map = {}
-    const s = []
     let n = n2.length
-    s.push(n2[n - 1])
-    map[n2[n - 1]] = -1
+    let map = { [n2[n - 1]]: -1 }
+    const s = [n2[n - 1]]
 
     for (let i = n - 2; i >= 0; i--) {
         while (s.length) {
