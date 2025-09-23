@@ -14,11 +14,11 @@
 var guessNumber = function (n) {
     let l = 1; r = n
     while (l <= r) {
-        const m = Math.floor(l + ((r - l) / 2));
+        const m = l + Math.floor((r - l) / 2);
         const guessPick = guess(m)
-        if(guessPick === 0) {
+        if (guessPick === 0) {
             return m;
-        } else if(guessPick === 1) {
+        } else if (guessPick === 1) {
             l = m + 1
         } else {
             r = m - 1
