@@ -4,19 +4,20 @@
  * @return {number}
  */
 var strStr = function(h, n) {
-    return h.indexOf(n);
-    // let l = 0;
-    // let r = 0;
+    // return h.indexOf(n);
+    
+    // sliding window
+    let hl = h.length;
+    let nl = n.length;
 
-    // while(l !== h.length && r !== n.length) {
-    //     if(n[r] === h[l]) {
-    //         r++
-    //         l++
-    //     } else {
-
-    //     }
-    // }
-    // return -1;
-
-
+    for(let i = 0; i <= hl - nl; i++) {
+        let j = 0;
+        for(j = 0; j < nl; j++) {
+            if(h[i + j] !== n[j]) {
+                break;
+            }
+        }
+        if(j === nl) return i;
+    }
+    return -1;
 };
