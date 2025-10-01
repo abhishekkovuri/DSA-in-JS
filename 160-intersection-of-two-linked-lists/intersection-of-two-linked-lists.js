@@ -29,40 +29,42 @@ var getIntersectionNode = function (headA, headB) {
     // return null;
 
     // 2 pointer
-    let m = 0
+    // let m = n = 0
+    // let pA = headA
+    // let pB = headB
+    // while(pA) {
+    //     m++;
+    //     pA = pA.next
+    // }
+    // while(pB) {
+    //     n++;
+    //     pB = pB.next
+    // }
+    // let diff = Math.abs(m - n)
+    // // I want first list as small and second as largest
+    // if(m > n) {
+    //     let temp = headA
+    //     headA = headB
+    //     headB = temp
+    // }
+    // for(let i = 0; i < diff; i++) {
+    //     headB = headB.next
+    // }
+    // pA = headA
+    // pB = headB
+    // while(pA != pB) {
+    //     pA = pA.next
+    //     pB = pB.next
+    // }
+    // return pA;
+
+
+    // Single loop
     let pA = headA
-    while(pA) {
-        m++;
-        pA = pA.next
-    }
-
-    let n = 0
     let pB = headB
-    while(pB) {
-        n++;
-        pB = pB.next
+    while (pA !== pB) {
+        pA = pA === null ? headB : pA.next
+        pB = pB === null ? headA : pB.next
     }
-
-    let diff = Math.abs(m - n)
-
-    // I want first list as small and second as largest
-    if(m > n) {
-        let temp = headA
-        headA = headB
-        headB = temp
-    }
-
-    for(let i = 0; i < diff; i++) {
-        headB = headB.next
-    }
-
-    pA = headA
-    pB = headB
-
-    while(pA != pB) {
-        pA = pA.next
-        pB = pB.next
-    }
-
-    return pA;
+    return pA
 };
